@@ -56,11 +56,16 @@
                         <p>{{$product->description}}</p>
                         <p>{{$product->price}}</p>
                         <input class="qty" type="hidden" name="qty" value="1">
-
+                            <label id="product_{{$product->id}}"></label>
                             <button type="submit" data-id="{{$product->id}}" data-sku="{{$product->sku}}" data-description="{{$product->description}}" data-name="{{$product->name}}" data-price="{{$product->price}}" class=" add_to_cart btn btn-success">Add To Cart</button>
                     </div>
                     @endforeach
                 </div>
+            </div>
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 float-right">
+                <a href="{{ route('cart.all')}}" class="btn btn-info">
+                    Cart Page >>
+                </a>
             </div>
         </div>
         <script>
@@ -71,7 +76,9 @@
 
                 $('.add_to_cart').on('click', function() {
                     var cart = window.cart || [];
-                    cart.push({'id':$(this).data('id'),'sku':$(this).data('sku'), 'description': $(this).data('description'), 'name':$(this).data('name'), 'price':$(this).data('price')});
+                    var product_id = $(this).data('id');
+
+                    cart.push({'id':product_id,'sku':$(this).data('sku'), 'description': $(this).data('description'), 'name':$(this).data('name'), 'price':$(this).data('price')});
                     window.cart = cart;
 
                     $.ajax(
@@ -80,7 +87,11 @@
                         type: 'POST',
                         data: {'_token': '{{csrf_token()}}', 'cart' : cart},
                         success: function(data) {
-                            alert(data.message);
+                            
+                            $('#product_'+product_id).addClass('alert alert-success').css({'opacity': '1000', 'display':'block'}).html(data.message);
+                            setTimeout(() => {
+                                $('#product_'+product_id).fadeTo(1000, 0).slideUp(1000)
+                            }, 2000);
                         }
                     });
 

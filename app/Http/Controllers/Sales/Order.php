@@ -23,7 +23,7 @@ class Order extends Controller
     public function saveOrder(AddressValidationRequest $request)
     {
         $order = new \App\Models\Order();
-
+        
         $auth = Auth::user();
         $saveOrderItem = [];
         
@@ -52,7 +52,14 @@ class Order extends Controller
             
         }
 
-        return view('order.thanks')
-            ->with('order', $order);
+        // return view('order.thanks')
+        //     ->with('order', $order);
+        return response()->json(['status'=>'success'], 200);
+    }
+
+    public function successPage()
+    {
+        session()->flash('cart');
+        return view('order.thanks');
     }
 }

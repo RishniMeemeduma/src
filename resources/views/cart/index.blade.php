@@ -66,7 +66,7 @@
                             @endforeach
 
                             <tr>
-                                <td colspan="3">Total</td>
+                                <td colspan="3" class="text-center">Total</td>
                                 <td>
                                     @php
                                        echo  $total;
@@ -83,43 +83,6 @@
                 <a href="{{route('order.placeorder')}}" class="btn btn-success" >Place Order</a>
             </div>
         </div>
-        <script>
-
-            $(document).ready(function(){
-                // window.cart = <?php echo !empty($cart) ? json_encode($cart) : '[]' ?>
-
-                // updateCart();
-
-                // $('.add_to_cart').on('click', function() {
-                //     var cart = window.cart || [];
-                //     cart.push({'id':$(this).data('id'), 'name':$(this).data('name'), 'price':$(this).data('price')});
-                //     window.cart = cart;
-
-                //     $.ajax(
-                //     {
-                //         url:'/cart/store',
-                //         type: 'POST',
-                //         data: {'_token': '{{csrf_token()}}', 'cart' : cart},
-                //         success: function(data) {
-                //             alert(data.message);
-                //         }
-                //     });
-
-                //     updateCart();
-                // });
-            });
-
-            // async function updateCart(){
-            //     var count = 0;
-            //     console.log(window.cart);
-            //     window.cart.forEach(function (item, i) {
-            //         count ++
-            //     });
-  
-            //     $("#cart_count").html(cart.length);
-            // }
-
-        </script>
         <!-- bootstrap js -->
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
