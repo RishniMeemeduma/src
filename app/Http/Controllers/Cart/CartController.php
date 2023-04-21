@@ -17,7 +17,6 @@ class CartController extends Controller
      */
     public function index()
     {
-        // dd( session()->get('cart'));
         return view('cart.index')->with('cartItems', session()->get('cart'));
     }
 
