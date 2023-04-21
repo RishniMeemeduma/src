@@ -31,7 +31,9 @@ class Order extends Controller
         $saveOrder= [
             'customer_id'=>$auth ? $auth['id'] : '',
             'delivery_address' => '"'.$request['delivery_address'].'"',
-            'price'=> $request['price']
+            'price'=> $request['price'],
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s'),
         ];
         $orderId = $order->insertGetId($saveOrder);
 
