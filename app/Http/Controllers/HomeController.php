@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('order.form');
+        return view('order.form')->with(['cart',1]);
     }
 }

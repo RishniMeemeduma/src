@@ -22,7 +22,9 @@ Route::get('/cart', [App\Http\Controllers\Cart\CartController::class, 'index'])-
 
 /** order routes */
 Route::get('/order/placeOrder', [App\Http\Controllers\Sales\Order::class, 'placeOrder'])->name('order.placeorder');
-Route::middleware(['json.response'])->post('/order/save', [App\Http\Controllers\Sales\Order::class, 'saveOrder'])->name('order.save');
+Route::post('/order/save', [App\Http\Controllers\Sales\Order::class, 'saveOrder'])->name('order.save');
+Route::get('/order/thanks', [App\Http\Controllers\Sales\Order::class,'successPage'])->name('order.thanks');
+
 
 /** Login / Registration  */
 Auth::routes();
